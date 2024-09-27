@@ -1,3 +1,5 @@
+ "use client";
+
  import React from 'react';
 import { useDateContext } from './DateContext';
 import { generateRecurrenceDates } from './utils';

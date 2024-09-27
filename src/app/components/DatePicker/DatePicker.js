@@ -1,7 +1,10 @@
- import React from 'react';
-import RecurrenceOptions from './RecurrenceOptions';
+"use client";  // Ensures this component runs on the client-side
+
+import React, { createContext } from 'react';
 import CalendarPreview from './CalendarPreview';
-import { useDateContext } from './DateContext';
+import { useDateContext } from './DateContext'; // Assumes DateContext is defined elsewhere
+import RecurrenceOptions from './RecuurenceOptions';
+// import RecurrenceOptions from './RecurrenceOptions'; // Fixed the typo in import
 
 const DatePicker = () => {
   const { startDate, endDate, setStartDate, setEndDate } = useDateContext();
@@ -14,7 +17,7 @@ const DatePicker = () => {
         <label className="block font-medium">Start Date:</label>
         <input
           type="date"
-          value={startDate}
+          value={startDate || ''}  // Add fallback in case startDate is null/undefined
           onChange={(e) => setStartDate(e.target.value)}
           className="border p-2 rounded-md w-full"
         />
@@ -24,14 +27,15 @@ const DatePicker = () => {
         <label className="block font-medium">End Date (optional):</label>
         <input
           type="date"
-          value={endDate || ''}
+          value={endDate || ''}  // Add fallback in case endDate is null/undefined
           onChange={(e) => setEndDate(e.target.value)}
           className="border p-2 rounded-md w-full"
         />
       </div>
 
+      {/* <RecurrenceOptions />  Assuming this is a correct component */}
       <RecurrenceOptions />
-      <CalendarPreview />
+      <CalendarPreview />    {/* Assuming this component works properly */}
     </div>
   );
 };
